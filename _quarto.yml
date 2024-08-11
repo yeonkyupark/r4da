@@ -3,13 +3,16 @@ project:
   output-dir: docs
 
 book:
-  title: "r4da"
+  title: "데이터 분석을 위한 실무 R"
   author: "YK"
   date: "2024. 8. 11."
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - identify.qmd
+    - collect.qmd
+    - clean.qmd
+    - analyze.qmd
+    - interpret.qmd
     - references.qmd
 
 bibliography: references.bib

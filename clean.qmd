@@ -1,0 +1,7 @@
+# 데이터 정제 {#sec-clean}
+
+현장에서 수집된 데이터는 단언컨데 분석 목적에 맞춰 준비되어 있지 않다.
+
+> 80 percent of data science is cleaning the data and 20 percent is complaining about cleaning the data. - Kaggle founder and CEO Anthony Goldbloom
+
+결측치 처리, 이상치 처리, Feature Engineering 등 분석 목적에 맞는 데이터 구조를 갖추도록 작업해야 한다.

@@ -23,7 +23,8 @@ df_OA
 data.frame에서 개선된 자료형인 tibble 형식을 이용할 수도 있다.
 
 ```{r}
-tb_OA <- tibble::tibble(
+library(tibble)
+tb_OA <- tibble(
   product = c("PC", "Notebook", "Monior"),
   price = c(1000000, 1500000, 500000)
 )
@@ -48,7 +49,7 @@ tb_OA
 
 아래는 `Paste as tribble` 명령어를 선택한 결과이다.
 
-```{r}
+```{r eval=FALSE}
 tibble::tribble(
         ~product,   ~price,
             "PC", 1000000L,

@@ -1,3 +1,62 @@
-# 자료료수집 {#sec-collect}
+# 자료수집 {#sec-collect}
 
 문제 정의에 따라 데이터를 수집한다. 현장에서는 다양한 형태, 즉 개인이 텍스트 파일로 관리할 수도 있고, 엑셀 등과 같은 특정 프로그램을 사용하여 관리할 수도, 또는 관계형 데이터베이스를 이용하여 데이터를 축적할 수도 있다. 뿐만 아니라 표준화나 정규화가 잘 적용된 정형 데이터 일수도 있고 이메일이나 녹음, 녹화 파일 등 비정형 데이터일 수도 있다.
+
+## 직접 생성
+
+데이터 양이 많지 않다면 단순히 데이터를 복사/붙여넣기 하거나 하나씩 직접 작성할 수도 있다.
+
+### data.frame을 이용한 자료 생성성
+
+OA제품별 가격을 data.frame을 통해 작성할 수 있다.
+
+```{r}
+df_OA <- data.frame(
+  product = c("PC", "Notebook", "Monior"),
+  price = c(1000000, 1500000, 500000)
+)
+df_OA
+```
+
+### tibble을 이용한 자료 생성
+
+data.frame에서 개선된 자료형인 tibble 형식을 이용할 수도 있다.
+
+```{r}
+tb_OA <- tibble::tibble(
+  product = c("PC", "Notebook", "Monior"),
+  price = c(1000000, 1500000, 500000)
+)
+tb_OA
+```
+
+### package를 이용한 자료 입력
+
+`datapasta`\[\^datapasta\] 패키지를 이용하여 자료를 쉽게 입력할 수 있다. `datapasta`를 설치하게 되면 `Addins` 메뉴에 추가된다. \[\^datapasta\]: https://cran.r-project.org/web/packages/datapasta/readme/README.html
+
+![](https://raw.githubusercontent.com/milesmcbain/datapasta/master/inst/media/tribble_paste.gif)
+
+스프레드쉬트에서 아래와 같이 입력한 후 복사를 한다.
+
+![](images/clipboard-1868840731.png)
+
+`Addins` 메뉴를 통해 원하는 명령어를 선택한다.
+
+![](images/clipboard-2793799454.png)
+
+아래는 `Paste as tribble` 명령어를 선택한 결과이다.
+
+```{r}
+tibble::tribble(
+        ~product,   ~price,
+            "PC", 1000000L,
+        "NotePC", 1500000L,
+       "Monitor",  500000L
+       )
+```
+
+
+
+## 파일에서 읽어 오기
+
+## DB 또는 외부에서 읽어 오기

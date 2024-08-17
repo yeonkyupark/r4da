@@ -30,7 +30,7 @@ step4 --> step5
 
 
 ```{r echo=FALSE, warning=FALSE}
-require(pacman)
-pacman::p_load(tidyverse, data.table)
+require(tidyverse)
+require(data.table)
 ```
 

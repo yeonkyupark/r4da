@@ -5,7 +5,7 @@ project:
 book:
   title: "데이터 분석을 위한 실무 R"
   author: "YK"
-  date:  "`r format(Sys.Date())`"
+  date:  "`r Sys.Date()`"
   chapters:
     - index.qmd
     - identify.qmd

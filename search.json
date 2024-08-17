@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "데이터 분석을 위한 실무 R",
     "section": "",
-    "text": "들어가기\nR 언어를 이용하여 실무에서 데이터 분석을 하고 있다. 인터넷을 통해 쉽게 접할 수 있는 정례화된 내용으론 현업 문제를 해결하기에는 많은 어려움이 있다. 그때 그때 산발적으로 학습했던 내용을 정리하고자 한다.\n현업 문제를 해결하기 위해 급급했던 내용으로 효율성은 낮을 수 있으나 효과성은 확인된 내용이다.",
+    "text": "들어가기\nR 언어를 이용하여 실무에서 데이터 분석을 하고 있다. 인터넷을 통해 쉽게 접할 수 있는 정례화된 내용으론 현업 문제를 해결하기에는 많은 어려움이 있다. 그때 그때 산발적으로 학습했던 내용을 정리하고자 한다.\n현업 문제를 해결하기 위해 급급했던 내용으로 효율성은 낮을 수 있으나 효과성은 확인된 내용이다.\nflowchart LR\n    subgraph step1[STEP 1]\n        define[문제정의]\n    end\n    subgraph step2[STEP 2]\n        collect[자료수집]\n    end\n    subgraph step3[STEP 3]\n        clean[자료정제]\n    end\n    subgraph step4[STEP 4]\n        analyze[자료분석]\n    end\n    subgraph step5[STEP 5]\n        interpret[결과활용]\n    end\n\nstep1 --&gt; step2\nstep2 --&gt; step3\nstep3 --&gt; step4\nstep4 --&gt; step5",
     "crumbs": [
       "들어가기"
     ]

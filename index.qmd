@@ -29,7 +29,7 @@ step4 --> step5
 ```
 
 
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE}
 install.packages("tibble")
 ```
 

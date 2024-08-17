@@ -23,6 +23,7 @@ df_OA
 data.frame에서 개선된 자료형인 tibble 형식을 이용할 수도 있다.
 
 ```{r}
+library(tibble)
 tb_OA <- tibble::tibble(
   product = c("PC", "Notebook", "Monior"),
   price = c(1000000, 1500000, 500000)

@@ -30,6 +30,7 @@ step4 --> step5
 
 
 ```{r echo=FALSE, warning=FALSE}
-install.packages("tibble")
+require(pacman)
+pacman::p_load(tidyverse, data.table)
 ```
 

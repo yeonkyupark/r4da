@@ -1,0 +1,15 @@
+{
+  "hash": "6e9494d8ff2af50eba03126c1cd4bb05",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# 자료수집 {#sec-collect}\n\n문제 정의에 따라 데이터를 수집한다. 현장에서는 다양한 형태, 즉 개인이 텍스트 파일로 관리할 수도 있고, 엑셀 등과 같은 특정 프로그램을 사용하여 관리할 수도, 또는 관계형 데이터베이스를 이용하여 데이터를 축적할 수도 있다. 뿐만 아니라 표준화나 정규화가 잘 적용된 정형 데이터 일수도 있고 이메일이나 녹음, 녹화 파일 등 비정형 데이터일 수도 있다.\n\n## 직접 생성\n\n데이터 양이 많지 않다면 단순히 데이터를 복사/붙여넣기 하거나 하나씩 직접 작성할 수도 있다.\n\n### data.frame을 이용한 자료 생성성\n\nOA제품별 가격을 data.frame을 통해 작성할 수 있다.\n\n\n::: {.cell}\n\n```{.r .cell-code}\ndf_OA <- data.frame(\n  product = c(\"PC\", \"Notebook\", \"Monior\"),\n  price = c(1000000, 1500000, 500000)\n)\ndf_OA\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n   product   price\n1       PC 1000000\n2 Notebook 1500000\n3   Monior  500000\n```\n\n\n:::\n:::\n\n\n### tibble을 이용한 자료 생성\n\ndata.frame에서 개선된 자료형인 tibble 형식을 이용할 수도 있다.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tibble)\ntb_OA <- tibble::tibble(\n  product = c(\"PC\", \"Notebook\", \"Monior\"),\n  price = c(1000000, 1500000, 500000)\n)\ntb_OA\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n# A tibble: 3 × 2\n  product    price\n  <chr>      <dbl>\n1 PC       1000000\n2 Notebook 1500000\n3 Monior    500000\n```\n\n\n:::\n:::\n\n\n### package를 이용한 자료 입력\n\n`datapasta`[^collect-1]패키지를 이용하여 자료를 쉽게 입력할 수 있다. `datapasta`를 설치하게 되면 `Addins` 메뉴에 추가된다.\n\n[^collect-1]: <https://cran.r-project.org/web/packages/datapasta/readme/README.html>\n\n![](https://raw.githubusercontent.com/milesmcbain/datapasta/master/inst/media/tribble_paste.gif)\n\n스프레드쉬트에서 아래와 같이 입력한 후 복사를 한다.\n\n![](images/clipboard-1868840731.png)\n\n`Addins` 메뉴를 통해 원하는 명령어를 선택한다.\n\n![](images/clipboard-2793799454.png)\n\n아래는 `Paste as tribble` 명령어를 선택한 결과이다.\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntibble::tribble(\n        ~product,   ~price,\n            \"PC\", 1000000L,\n        \"NotePC\", 1500000L,\n       \"Monitor\",  500000L\n       )\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n# A tibble: 3 × 2\n  product   price\n  <chr>     <int>\n1 PC      1000000\n2 NotePC  1500000\n3 Monitor  500000\n```\n\n\n:::\n:::\n\n\n## 파일에서 읽어 오기\n\n## DB 또는 외부에서 읽어 오기\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

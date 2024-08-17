@@ -33,7 +33,9 @@ tb_OA
 
 ### package를 이용한 자료 입력
 
-`datapasta`\[\^datapasta\] 패키지를 이용하여 자료를 쉽게 입력할 수 있다. `datapasta`를 설치하게 되면 `Addins` 메뉴에 추가된다. \[\^datapasta\]: https://cran.r-project.org/web/packages/datapasta/readme/README.html
+`datapasta`[^collect-1]패키지를 이용하여 자료를 쉽게 입력할 수 있다. `datapasta`를 설치하게 되면 `Addins` 메뉴에 추가된다.
+
+[^collect-1]: <https://cran.r-project.org/web/packages/datapasta/readme/README.html>
 
 ![](https://raw.githubusercontent.com/milesmcbain/datapasta/master/inst/media/tribble_paste.gif)
 
@@ -56,8 +58,47 @@ tibble::tribble(
        )
 ```
 
+### 데이터 내보내기
 
+작성된 데이터는 여러 형태로 내보낼 수 있다. 하지만 다른 프로그램과 호환성이나 범용성을 고려한다면 가능한 `.csv` 형식으로 저장한다. 대표적으로 `utils` 패키지 내 `write.csv()`와 `readr` 패키지 내 `write_csv()`를 이용한다. 사용법은 대동소이하며 개인 취향에 따라 취사선택하면 된다.
+
+```{r eval=FALSE}
+write.csv(x = df_OA, file = "./OA.csv")
+```
+
+이외 엑셀 형태로 저장할 수도 있다. `opnexlsx` 패키지를 설치하여 읽고(`read.xlsx()`) 필요에 따라 적절히 활용한다.
 
 ## 파일에서 읽어 오기
 
+데이터 분석에 사용되는 파일 형식은 통상적으로 `.csv` 형식을 이용한다. 여러 함수를 통해 파일 내 데이터를 읽을 수 있지만 통상적으로 `read.csv()`을 이용한다. 테이블 형태로 구성된 데이터라 하더라도 구분자나 해더 여부, 행 이름 등 파일 특성에 따라 `read.table()`이나 `read.delim()`을 이용하기도 한다.
+
+### csv 파일에서 읽어 오기
+
+`read.csv`를 통해 파일을 읽어 올 수 있다.
+
+```{r eval=FALSE}
+df_OA_from_csv <- read.csv(file = "./OA.csv")
+df_OA_from_csv
+```
+
+### 엑셀 파일에서 읽어 오기
+
+`openxlsx` 패키지 내 `write.xlsx()`를 이용하여 엑셀 형식으로 저장할 수 있다.
+
+### 대용량 파일 읽어 오기
+
+`data.table` 패키지 내 `fread()` 함수를 통해 대용량 데이터를 빠르고 편리하게 읽을 수 있다. `data.frame`이나 `tibble` 형태의 자료형은 다양한 패키지를 사용하여 데이터 정제, 가공, 집약할 수 있으나 처리 속도가 느리다는 단점이 있다. 이를 해결하기 위한 데이터 형태가 `data.table`이다. 즉 `fread()`를 통해 데이터를 읽게 되면 자료형태는 `data.table`이 된다. `data.frame` 속성을 가지고 있어 `data.frame`을 지원하는 패키지를 대부분 사용할 수 있다.
+
+```{r}
+library(data.table)
+dt_OA_from_csv <-data.table::fread("./OA.csv")
+dt_OA_from_csv
+```
+
+```{r}
+class(dt_OA_from_csv)
+```
+
 ## DB 또는 외부에서 읽어 오기
+
+이 외 데이터가 자동으로 수집되어 적재되는 시스템에서 읽어 올 수 있다. 이런 경우 데이터베이스(DB)로 저장소가 구축되어 있고 DBMS를 통해 관리된다. R에서는 `sql`을 지원하며 제품별 패키지가 제공되어 있다. 본 예제에서는 `SQLite`에서 데이터를 읽고 쓰는 방법을 알아 보기로 한다.

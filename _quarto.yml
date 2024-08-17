@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "데이터 분석을 위한 실무 R"
+  title: "데이터분석 실무 R기"
   author: "YK"
   date: last-modified
   date-format: iso
@@ -23,3 +23,5 @@ format:
     theme: cosmo
     mermaid:
       theme: neutral
+
+freeze: auto

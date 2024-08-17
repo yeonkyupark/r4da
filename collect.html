@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; 자료료수집 – 데이터 분석을 위한 실무 R</title>
+<title>2&nbsp; 자료수집 – 데이터 분석을 위한 실무 R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./collect.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">자료료수집</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./collect.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">자료수집</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -121,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./collect.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">자료료수집</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">자료수집</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -153,15 +187,28 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#직접-생성" id="toc-직접-생성" class="nav-link active" data-scroll-target="#직접-생성"><span class="header-section-number">2.1</span> 직접 생성</a>
+  <ul class="collapse">
+  <li><a href="#data.frame을-이용한-자료-생성성" id="toc-data.frame을-이용한-자료-생성성" class="nav-link" data-scroll-target="#data.frame을-이용한-자료-생성성"><span class="header-section-number">2.1.1</span> data.frame을 이용한 자료 생성성</a></li>
+  <li><a href="#tibble을-이용한-자료-생성" id="toc-tibble을-이용한-자료-생성" class="nav-link" data-scroll-target="#tibble을-이용한-자료-생성"><span class="header-section-number">2.1.2</span> tibble을 이용한 자료 생성</a></li>
+  <li><a href="#package를-이용한-자료-입력" id="toc-package를-이용한-자료-입력" class="nav-link" data-scroll-target="#package를-이용한-자료-입력"><span class="header-section-number">2.1.3</span> package를 이용한 자료 입력</a></li>
+  </ul></li>
+  <li><a href="#파일에서-읽어-오기" id="toc-파일에서-읽어-오기" class="nav-link" data-scroll-target="#파일에서-읽어-오기"><span class="header-section-number">2.2</span> 파일에서 읽어 오기</a></li>
+  <li><a href="#db-또는-외부에서-읽어-오기" id="toc-db-또는-외부에서-읽어-오기" class="nav-link" data-scroll-target="#db-또는-외부에서-읽어-오기"><span class="header-section-number">2.3</span> DB 또는 외부에서 읽어 오기</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-collect" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">자료료수집</span></span></h1>
+<h1 class="title"><span id="sec-collect" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">자료수집</span></span></h1>
 </div>
 
 
@@ -179,8 +226,81 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>문제 정의에 따라 데이터를 수집한다. 현장에서는 다양한 형태, 즉 개인이 텍스트 파일로 관리할 수도 있고, 엑셀 등과 같은 특정 프로그램을 사용하여 관리할 수도, 또는 관계형 데이터베이스를 이용하여 데이터를 축적할 수도 있다. 뿐만 아니라 표준화나 정규화가 잘 적용된 정형 데이터 일수도 있고 이메일이나 녹음, 녹화 파일 등 비정형 데이터일 수도 있다.</p>
+<section id="직접-생성" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="직접-생성"><span class="header-section-number">2.1</span> 직접 생성</h2>
+<p>데이터 양이 많지 않다면 단순히 데이터를 복사/붙여넣기 하거나 하나씩 직접 작성할 수도 있다.</p>
+<section id="data.frame을-이용한-자료-생성성" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="data.frame을-이용한-자료-생성성"><span class="header-section-number">2.1.1</span> data.frame을 이용한 자료 생성성</h3>
+<p>OA제품별 가격을 data.frame을 통해 작성할 수 있다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df_OA <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">product =</span> <span class="fu">c</span>(<span class="st">"PC"</span>, <span class="st">"Notebook"</span>, <span class="st">"Monior"</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">price =</span> <span class="fu">c</span>(<span class="dv">1000000</span>, <span class="dv">1500000</span>, <span class="dv">500000</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df_OA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   product   price
+1       PC 1000000
+2 Notebook 1500000
+3   Monior  500000</code></pre>
+</div>
+</div>
+</section>
+<section id="tibble을-이용한-자료-생성" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="tibble을-이용한-자료-생성"><span class="header-section-number">2.1.2</span> tibble을 이용한 자료 생성</h3>
+<p>data.frame에서 개선된 자료형인 tibble 형식을 이용할 수도 있다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tb_OA <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">product =</span> <span class="fu">c</span>(<span class="st">"PC"</span>, <span class="st">"Notebook"</span>, <span class="st">"Monior"</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">price =</span> <span class="fu">c</span>(<span class="dv">1000000</span>, <span class="dv">1500000</span>, <span class="dv">500000</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>tb_OA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  product    price
+  &lt;chr&gt;      &lt;dbl&gt;
+1 PC       1000000
+2 Notebook 1500000
+3 Monior    500000</code></pre>
+</div>
+</div>
+</section>
+<section id="package를-이용한-자료-입력" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="package를-이용한-자료-입력"><span class="header-section-number">2.1.3</span> package를 이용한 자료 입력</h3>
+<p><code>datapasta</code>[^datapasta] 패키지를 이용하여 자료를 쉽게 입력할 수 있다. <code>datapasta</code>를 설치하게 되면 <code>Addins</code> 메뉴에 추가된다. [^datapasta]: https://cran.r-project.org/web/packages/datapasta/readme/README.html</p>
+<p><img src="https://raw.githubusercontent.com/milesmcbain/datapasta/master/inst/media/tribble_paste.gif" class="img-fluid"></p>
+<p>스프레드쉬트에서 아래와 같이 입력한 후 복사를 한다.</p>
+<p><img src="images/clipboard-1868840731.png" class="img-fluid"></p>
+<p><code>Addins</code> 메뉴를 통해 원하는 명령어를 선택한다.</p>
+<p><img src="images/clipboard-2793799454.png" class="img-fluid"></p>
+<p>아래는 <code>Paste as tribble</code> 명령어를 선택한 결과이다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="sc">~</span>product,   <span class="sc">~</span>price,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">"PC"</span>, <span class="dv">1000000</span>L,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"NotePC"</span>, <span class="dv">1500000</span>L,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>       <span class="st">"Monitor"</span>,  <span class="dv">500000</span>L</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>       )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  product   price
+  &lt;chr&gt;     &lt;int&gt;
+1 PC      1000000
+2 NotePC  1500000
+3 Monitor  500000</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="파일에서-읽어-오기" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="파일에서-읽어-오기"><span class="header-section-number">2.2</span> 파일에서 읽어 오기</h2>
+</section>
+<section id="db-또는-외부에서-읽어-오기" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="db-또는-외부에서-읽어-오기"><span class="header-section-number">2.3</span> DB 또는 외부에서 읽어 오기</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -23,7 +23,6 @@ df_OA
 data.frame에서 개선된 자료형인 tibble 형식을 이용할 수도 있다.
 
 ```{r}
-library(tibble)
 tb_OA <- tibble::tibble(
   product = c("PC", "Notebook", "Monior"),
   price = c(1000000, 1500000, 500000)
@@ -90,7 +89,6 @@ df_OA_from_csv
 `data.table` 패키지 내 `fread()` 함수를 통해 대용량 데이터를 빠르고 편리하게 읽을 수 있다. `data.frame`이나 `tibble` 형태의 자료형은 다양한 패키지를 사용하여 데이터 정제, 가공, 집약할 수 있으나 처리 속도가 느리다는 단점이 있다. 이를 해결하기 위한 데이터 형태가 `data.table`이다. 즉 `fread()`를 통해 데이터를 읽게 되면 자료형태는 `data.table`이 된다. `data.frame` 속성을 가지고 있어 `data.frame`을 지원하는 패키지를 대부분 사용할 수 있다.
 
 ```{r}
-library(data.table)
 dt_OA_from_csv <-data.table::fread("./OA.csv")
 dt_OA_from_csv
 ```

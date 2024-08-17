@@ -32,5 +32,6 @@ step4 --> step5
 ```{r echo=FALSE, warning=FALSE}
 require(tidyverse)
 require(data.table)
+require(palmerpenguins)
 ```
 

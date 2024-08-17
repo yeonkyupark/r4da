@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "데이터분석 실무 R기",
     "section": "",
-    "text": "들어가기\nR 언어를 이용하여 실무에서 데이터 분석을 하고 있다. 인터넷을 통해 쉽게 접할 수 있는 정례화된 내용으론 현업 문제를 해결하기에는 많은 어려움이 있다. 그때 그때 산발적으로 학습했던 내용을 정리하고자 한다.\n현업 문제를 해결하기 위해 급급했던 내용으로 효율성은 낮을 수 있으나 효과성은 확인된 내용이다.\n\n\n\n\n\nflowchart LR\n    subgraph step1[STEP 1]\n        define[문제정의]\n    end\n    subgraph step2[STEP 2]\n        collect[자료수집]\n    end\n    subgraph step3[STEP 3]\n        clean[자료정제]\n    end\n    subgraph step4[STEP 4]\n        analyze[자료분석]\n    end\n    subgraph step5[STEP 5]\n        interpret[결과활용]\n    end\n\nstep1 --&gt; step2\nstep2 --&gt; step3\nstep3 --&gt; step4\nstep4 --&gt; step5\n\n\n\n\n\n\n\n\nLoading required package: tidyverse\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: data.table\n\n\nAttaching package: 'data.table'\n\n\nThe following objects are masked from 'package:lubridate':\n\n    hour, isoweek, mday, minute, month, quarter, second, wday, week,\n    yday, year\n\n\nThe following objects are masked from 'package:dplyr':\n\n    between, first, last\n\n\nThe following object is masked from 'package:purrr':\n\n    transpose",
+    "text": "들어가기\nR 언어를 이용하여 실무에서 데이터 분석을 하고 있다. 인터넷을 통해 쉽게 접할 수 있는 정례화된 내용으론 현업 문제를 해결하기에는 많은 어려움이 있다. 그때 그때 산발적으로 학습했던 내용을 정리하고자 한다.\n현업 문제를 해결하기 위해 급급했던 내용으로 효율성은 낮을 수 있으나 효과성은 확인된 내용이다.\n\n\n\n\n\nflowchart LR\n    subgraph step1[STEP 1]\n        define[문제정의]\n    end\n    subgraph step2[STEP 2]\n        collect[자료수집]\n    end\n    subgraph step3[STEP 3]\n        clean[자료정제]\n    end\n    subgraph step4[STEP 4]\n        analyze[자료분석]\n    end\n    subgraph step5[STEP 5]\n        interpret[결과활용]\n    end\n\nstep1 --&gt; step2\nstep2 --&gt; step3\nstep3 --&gt; step4\nstep4 --&gt; step5\n\n\n\n\n\n\n\n\nLoading required package: tidyverse\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: data.table\n\n\nAttaching package: 'data.table'\n\n\nThe following objects are masked from 'package:lubridate':\n\n    hour, isoweek, mday, minute, month, quarter, second, wday, week,\n    yday, year\n\n\nThe following objects are masked from 'package:dplyr':\n\n    between, first, last\n\n\nThe following object is masked from 'package:purrr':\n\n    transpose\n\n\nLoading required package: palmerpenguins",
     "crumbs": [
       "들어가기"
     ]
@@ -74,7 +74,7 @@
     "href": "clean.html",
     "title": "3  자료정제",
     "section": "",
-    "text": "3.1 결측치 처리\nR언어에서 결측치(missing value 또는 missing data)는 NA(Not Available)로 표기된다. 결측치는 다음과 같은 상황에서 발생할 수 있다.",
+    "text": "3.1 결측치 처리\nR언어에서 결측치(missing value 또는 missing data)는 NA(Not Available)로 표기된다. 결측치는 다음과 같은 상황에서 발생할 수 있다.\n현업에서 대부분 결측치는 MCAR, 즉 단순 실수나 순간적인 오류로 인해 값이 결측된다. 데이터가 충분한 경우는 고민없이 삭제할 수 있지만 데이터가 희소한 경우(불량 정보나 데이터 자체 획득이 어려운 경우) 적절한 값으로 대체하는 방법을 생각할 수 있다.\nR에서 결측치는 NA로 표시되며 is.na()통해 결측값을 확인할 수 있다.\npenguins &lt;- palmerpenguins::penguins\ncolSums(is.na(penguins))\n\n          species            island    bill_length_mm     bill_depth_mm \n                0                 0                 2                 2 \nflipper_length_mm       body_mass_g               sex              year \n                2                 2                11                 0",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>자료정제</span>"
     ]
@@ -84,7 +84,7 @@
     "href": "clean.html#결측치-처리",
     "title": "3  자료정제",
     "section": "",
-    "text": "MCAR(Missing Completely At Random) 관촬된 값을 입력 중 실수 또는 오류로 입력하지 못한 경우\nMAR(Missing At Random) 값을 어떤 이유로든 관촬하지 못한 경우\nMNAR(Missing At Not Random) 적절한 값이 입력을 하지 못한 경우\n\n\n3.1.1 결측치 제거\n\n\n3.1.2 결측치 대체",
+    "text": "MCAR(Missing Completely At Random) 관촬된 값을 입력 중 실수 또는 오류로 입력하지 못한 경우\nMAR(Missing At Random) 값을 어떤 이유로든 관촬하지 못한 경우\nMNAR(Missing At Not Random) 적절한 값이 입력을 하지 못한 경우\n\n\n\n\n\n3.1.1 결측치 제거\n\n\n3.1.2 결측치 대체",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>자료정제</span>"
     ]

@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -202,6 +236,18 @@ ul.task-list li input[type="checkbox"] {
 <li><code>MAR</code>(Missing At Random) 값을 어떤 이유로든 관촬하지 못한 경우</li>
 <li><code>MNAR</code>(Missing At Not Random) 적절한 값이 입력을 하지 못한 경우</li>
 </ul>
+<p>현업에서 대부분 결측치는 MCAR, 즉 단순 실수나 순간적인 오류로 인해 값이 결측된다. 데이터가 충분한 경우는 고민없이 삭제할 수 있지만 데이터가 희소한 경우(불량 정보나 데이터 자체 획득이 어려운 경우) 적절한 값으로 대체하는 방법을 생각할 수 있다.</p>
+<p>R에서 결측치는 <code>NA</code>로 표시되며 <code>is.na()</code>통해 결측값을 확인할 수 있다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> palmerpenguins<span class="sc">::</span>penguins</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(penguins))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          species            island    bill_length_mm     bill_depth_mm 
+                0                 0                 2                 2 
+flipper_length_mm       body_mass_g               sex              year 
+                2                 2                11                 0 </code></pre>
+</div>
+</div>
 <section id="결측치-제거" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="결측치-제거"><span class="header-section-number">3.1.1</span> 결측치 제거</h3>
 </section>
